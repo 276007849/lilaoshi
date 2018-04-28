@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ywl.hr.pojo" default-lazy="false">
+	<class name="Employee" table="employee_inf" >
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name"  type="java.lang.String" length="20"></property>
+		<property name="cardId" column="card_id" type="java.lang.String" length="18"></property>
+		<property name="address"  type="java.lang.String" length="50"></property>
+		<property name="postCode" column="post_code" type="java.lang.String" length="20"></property>
+		<property name="tel"  type="java.lang.String" length="16"></property>
+		<property name="phone"  type="java.lang.String" length="11"></property>
+		<property name="qqNum" column="qq_num" type="java.lang.String" length="10"></property>
+		<property name="email"  type="java.lang.String" length="50"></property>
+		<property name="sex"  type="java.lang.Integer" length="11"></property>
+		<property name="party"  type="java.lang.String" length="10"></property>
+		<property name="birthday" ></property>
+		<property name="race"  type="java.lang.String" length="100"></property>
+		<property name="education"  type="java.lang.String" length="10"></property>
+		<property name="speciality"  type="java.lang.String" length="20"></property>
+		<property name="hobby"  type="java.lang.String" length="100"></property>
+		<property name="pemark"  type="java.lang.String" length="500"></property>
+		<property name="createDate" column="create_date" ></property>
+		<many-to-one name="dept" class="Dept" column="dept_id" cascade="save-update" lazy="false"></many-to-one>
+		<many-to-one name="job" class="Job" column="job_id" cascade="save-update" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

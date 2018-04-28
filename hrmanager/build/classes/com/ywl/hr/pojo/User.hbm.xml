@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ywl.hr.pojo" default-lazy="false">
+	<class name="User" table="user_inf" >
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="loginName" column="loginname" type="java.lang.String" length="20"></property>
+		<property name="password"  type="java.lang.String" length="16"></property>
+		<property name="status"  type="java.lang.Integer" ></property>
+		<property name="createDate" column="create_date"  ></property>
+		<property name="userName" column="username" type="java.lang.String" length="20"></property>
+	</class>
+</hibernate-mapping>

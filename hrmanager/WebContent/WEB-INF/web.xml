@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>hrmanager</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  	<servlet>
+   <!--配置的是Servlet的名字  可以随便写  但是 一般情况下这个名字写 Servlet本身的名字-->
+   <servlet-name>DispatcherServlet</servlet-name>
+   <!--配置的是Servlet的类的路径-->
+   <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+   
+   <!--注入配置文件的路径-->
+   <init-param>
+     <!--下面的名字是不能变的-->
+     <param-name>contextConfigLocation</param-name>
+     <param-value>classpath:config/spring-mvc.xml</param-value>
+   </init-param>
+  
+  </servlet>
+   <!--配置的是Servlet的映射-->
+   <servlet-mapping>
+     <!--这里的Servlet的名字必须和上面保持一致-->
+    <servlet-name>DispatcherServlet</servlet-name>
+    <!--映射的路径一般情况下我们只是拦截某一类的请求 去进行事件的分发-->
+    <url-pattern>*.action</url-pattern>
+   </servlet-mapping>
+   	<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>/WEB-INF/classes/config/bean-*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 编码过滤器 -->
+	  <filter>
+			<filter-name>characterEncodingFilter</filter-name>
+			<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+			<init-param>
+				<param-name>encoding</param-name>
+				<param-value>UTF-8</param-value>
+			</init-param>
+	 </filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
